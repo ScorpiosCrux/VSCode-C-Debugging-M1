@@ -1,0 +1,35 @@
+
+//launch.json file for C++ on M1 Chips
+
+/* 
+PREREQUISITES:
+    * This file should in your .vscode folder (create one if you don't have one yet)
+    * In VSCode you need the CodeLLDB extension
+    * When you compile your program, you (need to remove the -O2 or -O3) and compile with the -g flag
+        -g is the debugging flag
+        -O2 is the optimization flag
+        -O3 is the optimization flag
+    * A tasks.json file inside your .vscode (if you want it to do some tasks before e.g. compiling)
+        This tasks.json file should have: (unless you don't want to use the defaultBuildTask) 
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            } 
+ */
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",                                     //lldb is for m1 because gdb doesn't exist on m1
+            "request": "launch",    
+            "name": "Debug",
+            "program": "${workspaceFolder}/dirstats",           // program (${workspaceFolder} is wherever your file explorer is. For e.g. if you opened
+                                                                // CPSC-457/a1/ then workspaceFolder will be prepended to whatever you have after ${workspaceFolder})
+            "args": ["${workspaceFolder}/test1/"],              // program args. Each argument is separated by a comma. e.g. [arg1, arg2] where arg1 is a string
+            "cwd": "${workspaceFolder}",                        // where the current working directory is
+            "preLaunchTask": "${defaultBuildTask}"              // executes the defaultBuildTask in tasks.json though 
+        }
+    ]
+}
+

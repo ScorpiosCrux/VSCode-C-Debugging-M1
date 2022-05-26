@@ -1,0 +1,27 @@
+
+/* 
+This file runs a simple make command before launching the program. This is completely optional
+*/
+
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "C/C++: g++ build active file",
+            "command": "make",              //This runs a make command, but you can have others and add arguments
+            /* "args": [
+                "-f",
+                "Makefile2"
+            ], */
+            "options": {
+                "cwd": "*put the absolute path of the folder in which your program is contained in here*"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ],
+    "version": "2.0.0"
+}
